@@ -33,6 +33,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'davidhalter/jedi-vim'
 Plug 'fratajczak/one-monokai-vim'
 Plug 'folke/tokyonight.nvim'
+Plug 'mhinz/vim-signify'
 
 if (has("nvim"))
     Plug 'nvim-lua/plenary.nvim'
@@ -57,8 +58,8 @@ set completeopt-=preview
 
 lua << EOF
 require("catppuccin").setup({
-    transparent_background = true, -- Fundo transparente
-    flavour = "mocha",              -- Escolha o tema: latte, frappe, macchiato, mocha
+    transparent_background = false, -- Fundo transparente
+    flavour = "latte",              -- Escolha o tema: latte, frappe, macchiato, mocha
 })
 vim.cmd.colorscheme "catppuccin"
 EOF
@@ -80,7 +81,9 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
-let g:airline_theme = 'sonokai'
+let g:airline_theme = 'bubblegum'
+highlight Visual guifg=#4d4d4d guibg=#b39e92
+highlight Normal guibg=#ffe0cc
 
 " Atalho para autocomplete com coc.nvim
 inoremap <expr> <Tab> pumvisible() ? coc#_select_confirm() : "<Tab>"
@@ -224,3 +227,8 @@ let g:ale_python_flake8_options = '--max-line-length=100 --extend-ignore=E203'
 let g:ale_python_black_options = '--line-length 100'
 let g:ale_python_isort_options = '--profile black -l 100'
 nnoremap tp :!python %<cr>
+
+" Configurações do vim-signify
+let g:signify_sign_change = '▌'
+let g:signify_sign_delete = '_'
+let g:signify_sign_add = '▌'
